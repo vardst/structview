@@ -1,6 +1,11 @@
 # StructView
 
+[![CI](https://github.com/vardst/structview/actions/workflows/ci.yml/badge.svg)](https://github.com/vardst/structview/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
 A visual JSON/YAML editor with three synced panels — tree view, code editor, and schema-aware form — designed for power users who think in structured data.
+
+**[Live Demo](https://vardst.github.io/structview)** | **[GitHub](https://github.com/vardst/structview)**
 
 ## Features
 
@@ -17,6 +22,8 @@ A visual JSON/YAML editor with three synced panels — tree view, code editor, a
 ## Quick Start
 
 ```bash
+git clone https://github.com/vardst/structview.git
+cd structview
 pnpm install
 pnpm dev
 ```
@@ -29,7 +36,7 @@ Open [http://localhost:5173](http://localhost:5173).
 |---------|-------------|
 | `pnpm dev` | Start dev server |
 | `pnpm build` | Production build |
-| `pnpm test` | Run unit tests |
+| `pnpm test` | Run unit tests (90 tests) |
 | `pnpm test:watch` | Tests in watch mode |
 | `pnpm lint` | ESLint |
 | `pnpm typecheck` | TypeScript check |
@@ -46,7 +53,7 @@ Open [http://localhost:5173](http://localhost:5173).
 | Validation | Ajv 8 (JSON Schema Draft 2020-12) |
 | State | Zustand |
 | URL Sharing | lz-string |
-| Testing | Vitest + React Testing Library |
+| Testing | Vitest |
 
 ## Architecture
 
@@ -103,6 +110,13 @@ src/
 | `Ctrl+D` | Duplicate selected node |
 | `Double-click` | Edit value in tree |
 
+## Contributing
+
+1. Fork the repo
+2. Create a feature branch (`git checkout -b feat/my-feature`)
+3. Commit your changes
+4. Push and open a PR
+
 ## License
 
-MIT
+[MIT](LICENSE)
