@@ -5,7 +5,7 @@
 
 A visual JSON/YAML editor with three synced panels — tree view, code editor, and schema-aware form — designed for power users who think in structured data.
 
-**[Live Demo](https://vardst.github.io/structview)** | **[GitHub](https://github.com/vardst/structview)**
+**[GitHub](https://github.com/vardst/structview)**
 
 ## Features
 

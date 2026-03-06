@@ -43,7 +43,7 @@ export function compileSchema(schema: Record<string, unknown>) {
     // Remove any previously cached schema
     ajv.removeSchema('structview-schema')
     return ajv.compile({ ...schema, $id: 'structview-schema' })
-  } catch (e) {
+  } catch {
     return null
   }
 }

@@ -68,7 +68,7 @@ export default function App() {
 
   const [panelWidths, setPanelWidths] = useState({ tree: 33, code: 34, form: 33 })
   const widthsRef = useRef(panelWidths)
-  widthsRef.current = panelWidths
+  useEffect(() => { widthsRef.current = panelWidths }, [panelWidths])
 
   useKeyboard()
 

@@ -140,6 +140,18 @@ export function FormPanel() {
   const setFocusedPanel = useUIStore(s => s.setFocusedPanel)
   const [newKeyName, setNewKeyName] = useState('')
 
+  const selected = getAtPath(parsed, selectedPath)
+  const type = selected !== undefined ? getNodeType(selected) : null
+
+  const handleAddChild = () => {
+    if (type === 'object') {
+      addChildAtPath(selectedPath, newKeyName || undefined)
+      setNewKeyName('')
+    } else if (type === 'array') {
+      addChildAtPath(selectedPath)
+    }
+  }
+
   if (parseError) {
     return (
       <div className="flex-1 flex items-center justify-center p-4 text-sm text-destructive">
@@ -148,25 +160,13 @@ export function FormPanel() {
     )
   }
 
-  const selected = getAtPath(parsed, selectedPath)
-  if (selected === undefined) {
+  if (selected === undefined || type === null) {
     return (
       <div className="flex-1 flex items-center justify-center p-4 text-sm text-muted-foreground">
         <p>Select a node in the tree to edit</p>
       </div>
     )
   }
-
-  const type = getNodeType(selected)
-
-  const handleAddChild = useCallback(() => {
-    if (type === 'object') {
-      addChildAtPath(selectedPath, newKeyName || undefined)
-      setNewKeyName('')
-    } else if (type === 'array') {
-      addChildAtPath(selectedPath)
-    }
-  }, [type, selectedPath, newKeyName, addChildAtPath])
 
   const renderFields = () => {
     if (type === 'object') {

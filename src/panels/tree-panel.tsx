@@ -26,10 +26,9 @@ interface TreeNodeProps {
   nodeKey: string | number
   value: JsonValue
   depth: number
-  isLast: boolean
 }
 
-function TreeNode({ path, nodeKey, value, depth, isLast: _isLast }: TreeNodeProps) {
+function TreeNode({ path, nodeKey, value, depth }: TreeNodeProps) {
   const type = getNodeType(value)
   const childCount = getNodeChildCount(value)
   const hasChildren = childCount > 0
@@ -158,21 +157,21 @@ function TreeNode({ path, nodeKey, value, depth, isLast: _isLast }: TreeNodeProp
           nodeKey={i}
           value={item}
           depth={depth + 1}
-          isLast={i === value.length - 1}
+
         />
       ))
     }
 
     if (value !== null && typeof value === 'object') {
       const entries = Object.entries(value)
-      return entries.map(([k, v], i) => (
+      return entries.map(([k, v]) => (
         <TreeNode
           key={`${path}/${k}`}
           path={`${path}/${k}`}
           nodeKey={k}
           value={v}
           depth={depth + 1}
-          isLast={i === entries.length - 1}
+
         />
       ))
     }
@@ -311,7 +310,7 @@ export function TreePanel() {
           nodeKey={type === 'array' ? '(root)' : '(root)'}
           value={parsed}
           depth={0}
-          isLast={true}
+
         />
       ) : (
         <TreeNode
@@ -319,7 +318,7 @@ export function TreePanel() {
           nodeKey="(value)"
           value={parsed}
           depth={0}
-          isLast={true}
+
         />
       )}
     </div>
